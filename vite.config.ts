@@ -9,6 +9,7 @@ export default defineConfig({
         main: 'index.html',
       },
     },
+    chunkSizeWarningLimit: 1000,
   },
-  publicDir: 'public',  // This ensures the public directory is copied to dist
+  publicDir: 'public'
 })
