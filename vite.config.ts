@@ -11,5 +11,5 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 1000,
   },
-  publicDir: 'public'
+  publicDir: 'public' //m
 })
