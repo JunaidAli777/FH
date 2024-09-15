@@ -1,11 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/',
   build: {
-    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+      },
+    },
   },
+  publicDir: 'public',  // This ensures the public directory is copied to dist
 })
