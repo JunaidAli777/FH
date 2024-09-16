@@ -165,7 +165,7 @@ const Register: React.FC = () => {
         padding: "20px",
         boxSizing: "border-box",
         marginTop: "24px",
-        marginBottom: "8px",
+        marginBottom: "16rem",
       }}
     >
       
@@ -210,7 +210,7 @@ const Register: React.FC = () => {
       >
         Enter the details to create your account
       </Typography>
-      <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ width: "53.25rem", height: "38.734375rem", maxWidth: "90vw", marginBottom: { xs: 50, lg: 10}}}>
+      <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ width: "53.25rem", height: "38.734375rem", maxWidth: "90vw", marginBottom: { xs: 40, lg: 0}}}>
         <Stack sx={{ display: "flex", justifyContent: "center" }}>
           <ImageUpload onImageUpload={setImage} />
         </Stack>
@@ -553,16 +553,19 @@ const Register: React.FC = () => {
             <ForwardButton label="Login" />
           </Link>
         </Box>
+
+        <Stack sx={{display: "flex", justifyContent: "center", alignItems: "center",mt: 2, mb: 2 }}>
+            <CustomDivider />
+          </Stack>
+
+          <Stack sx={{display: "flex", justifyContent: "center", alignItems: "center",mt: 2, mb: 2 }}>
+            <GoogleButton2 />
+          </Stack>
+          
       </Box>
 
       
-      <Stack sx={{ mt: 4 }}>
-        <CustomDivider />
-      </Stack>
-
-      <Stack sx={{ mb: 4 }}>
-        <GoogleButton2 />
-      </Stack>
+      
     </Container>
   );
 };
