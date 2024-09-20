@@ -30,6 +30,8 @@ import GoogleButton2 from "./GoogleButton2";
 import { PasswordError } from "./PasswordError";
 import TermsAndConditions from "./TermsAndConditions";
 import { fields } from "@hookform/resolvers/ajv/src/__tests__/__fixtures__/data.js";
+import Captcha from "./Captcha";
+
 
 const registerSchema = z
   .object({
@@ -136,6 +138,7 @@ const Register: React.FC = () => {
 
   const [image, setImage] = useState<File | null>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -145,14 +148,21 @@ const Register: React.FC = () => {
     event.preventDefault();
   };
 
+
+
   const COUNTRY = watch("country");
   const STATE = watch("state");
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    if (!captchaToken) {
+      alert("Please complete CAPTCHA verification.");
+      return;
+    }
+
     data.image = image;
     console.log("Form submitted successfully:", data);
-    //console.log('Image:', image);
   };
+  
 
   return (
     <Container
@@ -210,7 +220,7 @@ const Register: React.FC = () => {
       >
         Enter the details to create your account
       </Typography>
-      <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ width: "53.25rem", height: "38.734375rem", maxWidth: "90vw", marginBottom: { xs: 40, lg: 0}}}>
+      <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ width: "53.25rem", height: "38.734375rem", maxWidth: "90vw", marginBottom: { xs: 52, lg: 20}}}>
         <Stack sx={{ display: "flex", justifyContent: "center" }}>
           <ImageUpload onImageUpload={setImage} />
         </Stack>
@@ -510,6 +520,16 @@ const Register: React.FC = () => {
               errors={errors}              
               />
             )}
+          />
+        </Stack>
+
+        <Stack 
+          spacing={2}
+          sx={{display: "flex", justifyContent: "center", alignItems: "center", mb: 2 }}
+        >
+        <Captcha
+            siteKey="6LeF2kgqAAAAAAnn3N_cHue-gztEopq5IqUrOGwr"
+            onVerify={(token) => setCaptchaToken(token)}
           />
         </Stack>
 
