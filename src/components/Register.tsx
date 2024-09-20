@@ -162,6 +162,8 @@ const Register: React.FC = () => {
     data.image = image;
     console.log("Form submitted successfully:", data);
   };
+
+  const SITE_KEY = import.meta.env.VITE_SITE_KEY
   
 
   return (
@@ -528,7 +530,7 @@ const Register: React.FC = () => {
           sx={{display: "flex", justifyContent: "center", alignItems: "center", mb: 2 }}
         >
         <Captcha
-            siteKey="6LeF2kgqAAAAAAnn3N_cHue-gztEopq5IqUrOGwr"
+            siteKey={SITE_KEY}
             onVerify={(token) => setCaptchaToken(token)}
           />
         </Stack>
