@@ -13,7 +13,7 @@ const envPath = path.join(__dirname, '..', '.env');
 dotenv.config({ path: envPath });
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -76,6 +76,8 @@ app.get('/api/users', async (req, res) => {
     res.status(500).json({ message: 'Error retrieving users', error });
   }
 });
+
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'dist', 'index.html'));
