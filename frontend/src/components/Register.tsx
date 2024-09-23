@@ -163,7 +163,7 @@ const Register: React.FC = () => {
     data.image = image;
   
     try {
-      const response = await axios.post('http://localhost:3000/api/users', data, {
+      const response = await axios.post('/api/users', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

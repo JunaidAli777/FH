@@ -77,6 +77,9 @@ app.get('/api/users', async (req, res) => {
   }
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'dist', 'index.html'));
+});
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
