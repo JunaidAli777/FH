@@ -50,8 +50,6 @@ interface User {
   terms: boolean;
 }
 
-let users: User[] = [];
-
 app.post('/api/users', upload.single('image'), async (req, res) => {
   try {
       const newUser = new User({
