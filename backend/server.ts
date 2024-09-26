@@ -35,21 +35,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-interface User {
-  id: number;
-  image?: string;
-  firstName: string;
-  middleName?: string;
-  lastName: string;
-  country?: string;
-  state?: string;
-  city?: string;
-  role?: string;
-  email: string;
-  password: string;
-  terms: boolean;
-}
-
 app.post('/api/users', upload.single('image'), async (req, res) => {
   try {
       const newUser = new User({
