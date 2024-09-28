@@ -6,7 +6,7 @@ import path from 'path';
 import fs from 'fs';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import User, { IUser } from './models/User';
+import User from './models/User';
 
 const envPath = path.join(__dirname, '..', '.env');
 
